@@ -20,6 +20,14 @@ app.get("/", (req, res) => {
     res.send("Működik a szerver.")
 })
 
+app.get("/v", (req,res) => {
+    const sql = "SELECT *FROM felvitelizok";
+    db.query(sql , (err, result) => {
+        if (err) return res.json(err);
+        return res.json(result);
+    })
+})
+
 app.listen(3000, () =>{
     console.log("A felveteli szervere a 3000-es porton fut");
 })
